@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  background: #0b1020;
+  color: #e2e8f0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+sub {
+  vertical-align: -0.25em;
+  line-height: 0;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.panel {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.9rem 1rem;
+}
+
+.canvas {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Transition tables: plain ruled style */
+.stt {
+  border-collapse: collapse;
+}
+.stt thead tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.stt tbody tr:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.stt th {
+  font-weight: 600;
+  color: #cbd5e1;
+  text-align: center;
+}
+.stt td {
+  color: #e2e8f0;
+  text-align: center;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+.stt tbody tr {
+  transition: background-color 0.3s;
+}
+.stt .row-focus {
+  background: rgba(251, 191, 36, 0.1);
+}
+.stt .row-member {
+  background: rgba(56, 189, 248, 0.07);
+}
+.stt .row-accept {
+  background: rgba(52, 211, 153, 0.08);
+}
+.stt .col-hot {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.stt .cell-hot {
+  background-color: rgba(251, 191, 36, 0.16) !important;
+  color: #fde68a;
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+  border-radius: 8px;
+  background: #4f5bd5;
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  transition: background 0.2s;
+}
+.btn-primary:hover {
+  background: #5f6be6;
+}
+
+.btn-icon {
+  display: grid;
+  place-items: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.btn-icon:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.btn-icon:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-round {
+  display: grid;
+  place-items: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  transition: all 0.2s;
+}
+.btn-round:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+}
+.btn-round:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Moving dashes along highlighted arrows */
+.edge-flow {
+  stroke-dasharray: 3 11;
+  animation: edge-flow 0.9s linear infinite;
+}
+@keyframes edge-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge-flow {
+    animation: none;
+  }
 }
